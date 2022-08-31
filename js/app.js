@@ -31,7 +31,7 @@ const displayAllCocktails = (cocktails) => {
       <p class="card-text">
         ${cocktail.strInstructions}
       </p>
-      <button onclick="loadDetails(${cocktail.idDrink})" class="btn btn-primary">Show Ingredient</button>
+      <button onclick="loadDetails(${cocktail.idDrink})" class="btn btn-warning text-success fw-bold">Show Ingredient</button>
     </div>
   </div>
     `;
