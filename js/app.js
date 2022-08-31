@@ -7,6 +7,15 @@ const loadCocktails = async () => {
   displayAllCocktails(data.drinks);
 };
 
+const loadDetails = async (cocktail) => {
+  const res = await fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktail}`
+  );
+  const data = await res.json();
+  console.log(data.drinks[0]);
+};
+
+// show all cocktails
 const displayAllCocktails = (cocktails) => {
   const container = document.getElementById("cocktail-container");
 
@@ -22,6 +31,7 @@ const displayAllCocktails = (cocktails) => {
       <p class="card-text">
         ${cocktail.strInstructions}
       </p>
+      <button onclick="loadDetails(${cocktail.idDrink})" class="btn btn-primary">Show Ingredient</button>
     </div>
   </div>
     `;
