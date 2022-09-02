@@ -7,12 +7,34 @@ const loadCocktails = async () => {
   displayAllCocktails(data.drinks);
 };
 
+const showModal = (drink) => {
+  const title = document.getElementById("modal-title");
+  const list = document.getElementById("ingredient-list");
+
+  title.innerText = drink.strDrink;
+
+  list.innerText = "";
+
+  // list
+  for (let i = 1; i < 5; i++) {
+    const li = document.createElement("li");
+    const product = `strIngredient${i}`;
+
+    const item = drink[product];
+
+    if (item !== null) {
+      li.innerText = item;
+      list.appendChild(li);
+    }
+  }
+};
+
 const loadDetails = async (cocktail) => {
   const res = await fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktail}`
   );
   const data = await res.json();
-  console.log(data.drinks[0]);
+  showModal(data.drinks[0]);
 };
 
 // show all cocktails
@@ -31,7 +53,8 @@ const displayAllCocktails = (cocktails) => {
       <p class="card-text">
         ${cocktail.strInstructions}
       </p>
-      <button onclick="loadDetails(${cocktail.idDrink})" class="btn btn-warning text-success fw-bold">Show Ingredient</button>
+      <button onclick="loadDetails(${cocktail.idDrink})" class="btn btn-warning text-success fw-bold"
+      data-bs-toggle="modal"  data-bs-target="#exampleModal" >Show Ingredient</button>
     </div>
   </div>
     `;
