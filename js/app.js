@@ -46,7 +46,7 @@ const displayAllCocktails = (cocktails) => {
     div.classList.add("col");
 
     div.innerHTML = `
-    <div class="card">
+    <div class="card bg-secondary border border-warning shadow-lg ">
     <img src="${cocktail.strDrinkThumb}" class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">${cocktail.strDrink}</h5>
